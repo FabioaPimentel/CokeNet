@@ -4,6 +4,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.IO;
+using System.Net;
 using System.Runtime.Serialization.Json;
 using System.Text;
 
@@ -12,6 +13,8 @@ namespace Negocio
 	public class SAP
 	{
 		public static string ambiente = "";
+		// requires using Microsoft.Extensions.Configuration;
+
 
 		public SAP()
 		{
@@ -67,7 +70,7 @@ namespace Negocio
 		public string ObterUsuarioSAP(string sistema)
 		{
 			if (sistema.ToUpper().Equals("COKENET"))
-				return ("SRVWSLOGISTI|Snova@*0911");
+				return ("CokeNet|9v}fw?12:Kxu");
 			return "";
 
 		}
@@ -86,7 +89,7 @@ namespace Negocio
 					parameters[RfcConfigParameters.SystemID] = "QA1";
 					parameters[RfcConfigParameters.PeakConnectionsLimit] = "20";
 					parameters[RfcConfigParameters.PoolSize] = "10";
-					parameters[RfcConfigParameters.ConnectionIdleTimeout] = "1"; // we keep connections for 1 minutes
+					parameters[RfcConfigParameters.IdleTimeout] = "1"; // we keep connections for 1 minutes
 					parameters[RfcConfigParameters.User] = dadosLogon[0];
 					parameters[RfcConfigParameters.Password] = dadosLogon[1];
 					parameters[RfcConfigParameters.Client] = "120";
@@ -101,7 +104,7 @@ namespace Negocio
 					parameters[RfcConfigParameters.SystemID] = "PR1";
 					parameters[RfcConfigParameters.PeakConnectionsLimit] = "20";
 					parameters[RfcConfigParameters.PoolSize] = "10";
-					parameters[RfcConfigParameters.ConnectionIdleTimeout] = "1"; // we keep connections for 1 minutes
+					parameters[RfcConfigParameters.IdleTimeout] = "1"; // we keep connections for 1 minutes
 					parameters[RfcConfigParameters.User] = dadosLogon[0];
 					parameters[RfcConfigParameters.Password] = dadosLogon[1];
 					parameters[RfcConfigParameters.Client] = "120";

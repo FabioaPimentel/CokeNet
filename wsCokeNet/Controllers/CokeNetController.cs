@@ -1,25 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Web.Http;
+﻿using Entities;
 using Negocio;
-using Entities;
+using System.Web.Http;
 
 namespace wsCokeNet.Controllers
 {
+	
 	/// <summary>
 	/// 
 	/// </summary>
-	[ApiController]
-	[Route("api/CokeNet")]
-	public class CokeNetController : ControllerBase
+	[RoutePrefix("api/CokeNet")]
+	public class CokeNetController : ApiController
 	{
 		/// <summary>
 		/// 
 		/// </summary>
 		/// <param name="json"></param>
 		/// <returns></returns>
-		[System.Web.Http.HttpPost]
+		[HttpPost]
 		public string OrdemVenda(OrdemVenda json)
 		{
 			Negocio.SAP neg = new Negocio.SAP();
@@ -31,11 +28,22 @@ namespace wsCokeNet.Controllers
 		/// </summary>
 		/// <param name="json"></param>
 		/// <returns></returns>
-		[System.Web.Http.HttpPost]
+		[HttpPost]
 		public string OrdemVendaCancelamento(OrdemVendaCancelamento json)
 		{
 			Negocio.SAP neg = new Negocio.SAP();
-			return neg.OrdemVendaCancelamento(json);
+			return  neg.OrdemVendaCancelamento(json);
+		}
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="json"></param>
+		/// <returns></returns>
+		[HttpGet]
+		public string Teste()
+		{
+			return "OK";
 		}
 	}
 }
